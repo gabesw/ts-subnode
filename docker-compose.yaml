@@ -1,0 +1,18 @@
+version: "3.7"
+services:
+  ts-subnode:
+    image: tailscale/tailscale:latest
+    hostname: ts-subnode
+    environment:
+      - TS_AUTHKEY=<YOUR AUTHKEY HERE>
+      - TS_HOSTNAME=subnode
+      - TS_EXTRA_ARGS=--advertise-connector --advertise-exit-node
+      - TS_STATE_DIR=/var/lib/tailscale
+    volumes:
+      - './tailscale-data:/var/lib/tailscale'
+      - './config/resolv.conf:/etc/resolv.conf:ro'
+      - /dev/net/tun:/dev/net/tun
+    cap_add:
+      - NET_ADMIN
+      - SYS_MODULE
+    restart: unless-stopped
