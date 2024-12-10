@@ -9,4 +9,6 @@ The `configure_subnode_dns.sh` file automatically grabs the Tailscale IPs of my 
 ### Tailscale
 Follow [this guide](https://tailscale.com/kb/1085/auth-keys) to create an <i>ephemeral</i> auth key. Replace `<YOUR AUTHKEY HERE>` with the generated key in `docker-compose.yaml`. 
 ### Getting Started
+The script is configured by default to look for devices tagged as "tag:dns". If you are using a different tag for your DNS servers in Tailscale, change the `DNS_TAG` variable in `configure_subnode_dns.sh` to the tag that you are using.
+
 Before starting the subnode for the first time, you must run `./configure_subnode_dns.sh` to create the `resolv.conf` for the subnode. Then just start the container with `docker compose up -d`.
